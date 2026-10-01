@@ -1,0 +1,6 @@
+{
+  "name": "GasDeliver",
+  "description": "On-demand gas cylinder delivery operating along Thika Superhighway with brand selection (TotalEnergies, Rubis, Afrigas, Pro Gas) and express corridor dispatch.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
