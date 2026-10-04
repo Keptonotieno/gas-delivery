@@ -14,7 +14,6 @@ import { DriverPortal } from './features/driver/DriverPortal';
 import { DriverActivationPage } from './features/auth/DriverActivationPage';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { UnauthorizedPage } from './components/UnauthorizedPage';
-import { DevRoleSwitcher } from './components/DevRoleSwitcher';
 
 const MainRouter: React.FC = () => {
   const { user, isLoading, logout } = useAuth();
@@ -216,9 +215,6 @@ const MainRouter: React.FC = () => {
     <>
       {/* Primary Application Route */}
       {renderRoute()}
-
-      {/* Environment-Gated Developer Mode Toolbar (Only rendered when import.meta.env.DEV is true) */}
-      {import.meta.env.DEV && <DevRoleSwitcher onNavigate={navigate} />}
     </>
   );
 };

@@ -505,7 +505,7 @@ export const CustomerPortal: React.FC = () => {
                           <Clock className="w-3.5 h-3.5 text-blue-600" />
                           <span>Est. Arrival:</span>
                           <span className="text-gray-900 font-mono font-bold">
-                            ~{activeOrder.driverEtaMinutes || 25} min
+                            {typeof activeOrder.driverEtaMinutes === 'number' ? `~${activeOrder.driverEtaMinutes} min` : 'Express (30 min)'}
                           </span>
                         </div>
                       )}
@@ -911,7 +911,7 @@ export const CustomerPortal: React.FC = () => {
                       >
                         {THIKA_HIGHWAY_ZONES.map((zone) => (
                           <option key={zone.id} value={zone.id}>
-                            📍 {zone.exitNumber} - {zone.name.split('/')[0]} ({zone.estMinutes})
+                            {zone.exitNumber} - {zone.name.split('/')[0]} ({zone.estMinutes})
                           </option>
                         ))}
                       </select>
@@ -976,8 +976,8 @@ export const CustomerPortal: React.FC = () => {
                       <div className="flex items-center bg-gray-100 p-0.5 rounded-lg border border-gray-200">
                         {[
                           { id: 'All', label: 'All' },
-                          { id: 'refill', label: '🔄 Refills' },
-                          { id: 'complete_kit', label: '📦 Complete Kits' }
+                          { id: 'refill', label: 'Refills' },
+                          { id: 'complete_kit', label: 'Complete Kits' }
                         ].map((t) => (
                           <button
                             key={t.id}

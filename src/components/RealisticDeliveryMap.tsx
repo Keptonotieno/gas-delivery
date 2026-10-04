@@ -744,7 +744,7 @@ export const RealisticDeliveryMap: React.FC<RealisticDeliveryMapProps> = ({
               </div>
 
               <div className="p-3 bg-blue-50/70 rounded-lg border border-blue-100 text-[11px] text-blue-900 space-y-1">
-                <p className="font-semibold">💡 Free Zero-Cost Prototyping:</p>
+                <p className="font-semibold">Development & Sandbox Testing:</p>
                 <p className="text-blue-800">
                   You can use a free Google Maps Demo Key with no billing setup or Cloud project required.
                 </p>

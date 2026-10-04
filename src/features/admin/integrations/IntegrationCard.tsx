@@ -11,7 +11,6 @@ import {
   Activity, 
   Play, 
   Power, 
-  Sparkles,
   ShieldCheck,
   Settings
 } from 'lucide-react';

@@ -182,7 +182,7 @@ export const DriverPortal: React.FC = () => {
             const gasDetails = ord?.cylinderSummary || `${ord?.cylinderBrand || 'Gas'} ${ord?.cylinderSize || ''}`;
             setActionNotice({
               type: 'success',
-              message: `🚀 Order #${ord?.id} for ${custName} (${gasDetails}) assigned to you! Live customer GPS & order details are now active.`
+              message: `Order #${ord?.id} for ${custName} (${gasDetails}) assigned to you. Live customer GPS & order details are now active.`
             });
             setNotifications((prev) => [
               {
@@ -344,12 +344,12 @@ export const DriverPortal: React.FC = () => {
 
       await api.updateOrderStatus(activeOrder.id, 'Delivered', {
         deliveredAt: new Date().toISOString(),
-        serialNumbers: podData.serialNumbers || ['KEBS-2024-8849'],
-        photoUrl: podData.photoUrl || 'mock-pod.jpg',
-        otpCode: podData.otpCode || '9482',
-        cylindersCollectedCount: podData.cylindersCollectedCount || 1,
-        cylindersDeliveredCount: podData.cylindersDeliveredCount || 1,
-        inspectionNotes: podData.inspectionNotes || 'Regulator soap-leak tested. Zero bubble leaks detected.'
+        photoUrl: podData.photoUrl || podData.signatureUrl || undefined,
+        signatureUrl: podData.signatureUrl || undefined,
+        signatureName: podData.signatureName || activeOrder.customerName || undefined,
+        cylindersCollectedCount: podData.cylinderExchangeCount ?? podData.cylindersCollectedCount ?? 1,
+        cylindersDeliveredCount: podData.deliveredQuantity ?? podData.cylindersDeliveredCount ?? 1,
+        inspectionNotes: podData.deliveryNotes || podData.inspectionNotes || 'Cylinder inspected and leak-tested.'
       });
 
       setShowPodModal(false);

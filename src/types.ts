@@ -215,7 +215,7 @@ export interface Order {
   driverCurrentLocation?: {
     lat: number;
     lng: number;
-    addressText: string;
+    addressText?: string;
   };
   deliverySlot: string; // e.g., "11-2 PM", "8:00 AM - 11:00 AM"
   deliveryDate: string; // e.g., "Today, Sep 8"
@@ -295,7 +295,7 @@ export interface Driver {
   location?: {
     lat: number;
     lng: number;
-    addressText: string;
+    addressText?: string;
   };
   accountActivated?: boolean;
   nationalId?: string;

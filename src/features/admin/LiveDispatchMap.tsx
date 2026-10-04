@@ -580,7 +580,7 @@ export const LiveDispatchMap: React.FC<LiveDispatchMapProps> = ({
                 >
                   <rect x="-35" y="-12" width="70" height="22" rx="6" fill="#0F172A" stroke="#EA580C" strokeWidth="1.2" />
                   <text x="0" y="3" fill="#FB923C" fontSize="10" fontWeight="bold" textAnchor="middle">
-                    {order.driverEtaMinutes || 18}m ETA
+                    {typeof order.driverEtaMinutes === 'number' ? `${order.driverEtaMinutes}m ETA` : 'En Route'}
                   </text>
                 </g>
               </g>
@@ -790,7 +790,9 @@ export const LiveDispatchMap: React.FC<LiveDispatchMapProps> = ({
                 {activePopup.data.driverName ? (
                   <div className="flex items-center justify-between text-[11px] text-slate-300">
                     <span>Driver: <strong className="text-white">{activePopup.data.driverName}</strong></span>
-                    <span className="text-emerald-400 font-semibold">{activePopup.data.driverEtaMinutes || 18}m ETA</span>
+                    <span className="text-emerald-400 font-semibold">
+                      {typeof activePopup.data.driverEtaMinutes === 'number' ? `${activePopup.data.driverEtaMinutes}m ETA` : 'Assigned'}
+                    </span>
                   </div>
                 ) : (
                   <div className="pt-1">
@@ -926,7 +928,7 @@ export const LiveDispatchMap: React.FC<LiveDispatchMapProps> = ({
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </div>
-              <p className="text-slate-400">Works with zero billing setup for prototyping in AI Studio.</p>
+              <p className="text-slate-400">Works with zero billing setup for testing and development environments.</p>
             </div>
 
             <div className="flex items-center justify-end gap-2 pt-2">

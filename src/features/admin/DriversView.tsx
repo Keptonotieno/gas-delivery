@@ -510,7 +510,7 @@ export const DriversView: React.FC<DriversViewProps> = ({ drivers, orders, onRef
                 </div>
                 <div className="p-2.5 rounded-lg bg-gray-50 border border-gray-200">
                   <span className="text-gray-400 block text-[10px]">Utilization</span>
-                  <span className="font-bold text-gray-900 text-base">{selectedDriver.utilizationPercentage || 74}%</span>
+                  <span className="font-bold text-gray-900 text-base">{selectedDriver.utilizationPercentage ?? 0}%</span>
                 </div>
               </div>
 

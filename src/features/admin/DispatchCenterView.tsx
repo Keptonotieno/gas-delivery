@@ -561,7 +561,7 @@ export const DispatchCenterView: React.FC<DispatchCenterViewProps> = ({
                         <span className="text-gray-700 truncate max-w-[150px] block">{activeOrder.customerName}</span>
                       </div>
                       <span className="text-emerald-700 font-bold text-xs">
-                        {activeOrder.driverEtaMinutes || 18}m ETA
+                        {typeof activeOrder.driverEtaMinutes === 'number' ? `${activeOrder.driverEtaMinutes}m ETA` : 'En Route'}
                       </span>
                     </div>
                   )}

@@ -65,44 +65,6 @@ export const initialUsers: (User & { passwordHash: string })[] = [
     corridorZone: 'Thika Road / Roysambu / Lumumba Drive',
     passwordHash: 'GasDeliver@2024',
     avatar: 'SM'
-  },
-  {
-    id: 'dev-admin-301',
-    name: 'Dev Ops Manager (Admin)',
-    email: 'dev.admin@test.com',
-    role: 'admin',
-    status: 'active',
-    phone: '+254 722 800 449',
-    passwordHash: 'GasDeliver@2024',
-    avatar: 'AD'
-  },
-  {
-    id: 'dev-drv-201',
-    name: 'Dev John (Driver)',
-    email: 'dev.driver@test.com',
-    role: 'driver',
-    status: 'active',
-    verificationStatus: 'approved',
-    phone: '+254 712 345 678',
-    vehicle: 'Toyota Hiace (KDB 123A)',
-    licensePlate: 'KDB 123A',
-    driverId: 'drv-john-1',
-    corridorZone: 'Thika Road / Roysambu / Lumumba Drive',
-    accountActivated: true,
-    passwordHash: 'GasDeliver@2024',
-    avatar: 'JD'
-  },
-  {
-    id: 'dev-cust-101',
-    name: 'Dev Sarah (Customer)',
-    email: 'dev.customer@test.com',
-    role: 'customer',
-    status: 'active',
-    phone: '+254 798 112 233',
-    address: 'Lumumba Drive, Roysambu Court Apt 4B',
-    corridorZone: 'Thika Road / Roysambu / Lumumba Drive',
-    passwordHash: 'GasDeliver@2024',
-    avatar: 'SC'
   }
 ];
 
@@ -343,87 +305,20 @@ export const initialDrivers: Driver[] = [
     initials: 'JK',
     vehicle: 'Toyota Hiace (KDB 123A)',
     licensePlate: 'KDB 123A',
-    rating: 4.9,
+    rating: 5.0,
     status: 'Available',
-    deliveredCountToday: 5,
-    utilizationPercentage: 78,
+    deliveredCountToday: 0,
+    utilizationPercentage: 0,
     corridorZone: 'Thika Road / Roysambu / Lumumba Drive',
     accountActivated: true,
     nationalId: '32145678',
-    drivingLicenseNo: 'DL-KEN-2022-8491'
+    drivingLicenseNo: 'DL-KEN-2022-8491',
+    location: { lat: -1.2185, lng: 36.8872, addressText: 'Roysambu Depot, Thika Road' }
   }
 ];
 
-// Seeded Driver Applications for Admin Verification Queue
-export const initialDriverApplications: DriverApplication[] = [
-  {
-    id: 'app-drv-101',
-    applicantName: 'Brian Omondi',
-    email: 'driver.pending@gasdeliver.co.ke',
-    phone: '+254 723 456 789',
-    nationalIdNumber: '29874512',
-    nationalIdDocumentUrl: 'national_id_ke_29874512.pdf',
-    driverLicenseNumber: 'DL-KEN-2023-4412',
-    driverLicenseDocumentUrl: 'driver_license_ke_4412.pdf',
-    vehicleMake: 'Isuzu',
-    vehicleModel: 'D-Max 2.5L Pickup',
-    licensePlate: 'KDC 789B',
-    vehicleType: 'Pickup / Van',
-    corridorZone: 'Kasarani / Sports View / Sunton',
-    experienceYears: 4,
-    emergencyContact: {
-      name: 'Grace Omondi',
-      phone: '+254 722 998 877',
-      relationship: 'Spouse'
-    },
-    status: 'pending',
-    submittedAt: new Date(Date.now() - 3600000 * 3.5).toISOString()
-  },
-  {
-    id: 'app-drv-102',
-    applicantName: 'Peter Kiprono',
-    email: 'peter.kiprono@gmail.com',
-    phone: '+254 701 987 654',
-    nationalIdNumber: '34561289',
-    nationalIdDocumentUrl: 'national_id_ke_34561289.pdf',
-    driverLicenseNumber: 'DL-KEN-2024-1189',
-    driverLicenseDocumentUrl: 'driver_license_ke_1189.pdf',
-    vehicleMake: 'Bajaj',
-    vehicleModel: 'Boxer 150 Heavy Carrier',
-    licensePlate: 'KMD 542X',
-    vehicleType: 'Motorcycle / Boda',
-    corridorZone: 'Westlands / Rhapta Road / Parklands',
-    experienceYears: 3,
-    emergencyContact: {
-      name: 'David Kiprono',
-      phone: '+254 711 223 344',
-      relationship: 'Brother'
-    },
-    status: 'pending',
-    submittedAt: new Date(Date.now() - 3600000 * 1.5).toISOString()
-  },
-  {
-    id: 'app-drv-100',
-    applicantName: 'John Kamau',
-    email: 'john.kamau@gasdeliver.co.ke',
-    phone: '+254 712 345 678',
-    nationalIdNumber: '32145678',
-    nationalIdDocumentUrl: 'national_id_ke_32145678.pdf',
-    driverLicenseNumber: 'DL-KEN-2022-8491',
-    driverLicenseDocumentUrl: 'driver_license_ke_8491.pdf',
-    vehicleMake: 'Toyota',
-    vehicleModel: 'Hiace High Roof',
-    licensePlate: 'KDB 123A',
-    vehicleType: 'Pickup / Van',
-    corridorZone: 'Thika Road / Roysambu / Lumumba Drive',
-    experienceYears: 6,
-    status: 'approved',
-    submittedAt: new Date(Date.now() - 86400000 * 5).toISOString(),
-    reviewedAt: new Date(Date.now() - 86400000 * 4).toISOString(),
-    reviewedBy: 'Operations Manager',
-    reviewNotes: 'Fully verified NTSA driving license class B/C and valid road safety certificate.'
-  }
-];
+// Live driver applications for compliance queue (registered dynamically via onboarding funnel)
+export const initialDriverApplications: DriverApplication[] = [];
 
 // Live operational orders (empty by default - populated in real-time as orders are placed)
 export const initialOrders: Order[] = [];

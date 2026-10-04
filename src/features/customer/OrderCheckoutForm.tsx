@@ -346,7 +346,7 @@ export const OrderCheckoutForm: React.FC<OrderCheckoutFormProps> = ({
                       : 'border-gray-200 bg-white text-gray-600 hover:bg-gray-50'
                   }`}
                 >
-                  <span className="font-bold text-xs block">🔄 Refill Exchange</span>
+                  <span className="font-bold text-xs block">Refill Exchange</span>
                   <span className="text-[10px] text-gray-500">I have an empty cylinder to swap</span>
                 </button>
 
@@ -359,7 +359,7 @@ export const OrderCheckoutForm: React.FC<OrderCheckoutFormProps> = ({
                       : 'border-gray-200 bg-white text-gray-600 hover:bg-gray-50'
                   }`}
                 >
-                  <span className="font-bold text-xs block">📦 New Complete Set</span>
+                  <span className="font-bold text-xs block">Complete Set & Kit</span>
                   <span className="text-[10px] text-gray-500">Cylinder + Gas + Burner/Hose</span>
                 </button>
               </div>

@@ -20,7 +20,6 @@ import {
   Plus, 
   ExternalLink,
   ChevronRight,
-  Sparkles,
   RefreshCw,
   Search,
   Filter,

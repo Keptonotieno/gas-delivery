@@ -1336,7 +1336,8 @@ async function startServer() {
     const total = subtotal + deliveryFee;
 
     const orderNumber = Math.floor(1000 + Math.random() * 9000);
-    const id = `OD-2024-${orderNumber}`;
+    const currentYear = new Date().getFullYear();
+    const id = `OD-${currentYear}-${orderNumber}`;
 
     // Generate secure M-Pesa transaction reference for STK push
     let mpesaTransactionId: string | undefined;
@@ -1926,7 +1927,7 @@ async function startServer() {
           // Decrement loaded cylinder count accurately
           const cylindersCount = Number(proofOfDelivery?.deliveredQuantity) ||
             order.items.reduce((acc, it) => acc + (it.quantity || 1), 0) || 1;
-          driver.load = Math.max(0, (driver.load ?? 8) - cylindersCount);
+          driver.load = Math.max(0, (driver.load ?? 0) - cylindersCount);
         } else if (status === 'Cancelled') {
           driver.status = 'Online';
           driver.activeOrderId = undefined;
@@ -2521,7 +2522,7 @@ async function startServer() {
 
     // Calculate from real delivered orders
     const driverOrders = db.orders.filter(o => o.driverId === driver.id && o.status === 'Delivered');
-    const deliveredTodayCount = driver.deliveredCountToday || driverOrders.length || 0;
+    const deliveredTodayCount = driverOrders.length;
     const cylindersDeliveredToday = driverOrders.reduce((sum, o) => {
       const itemsCount = (o.items || []).reduce((acc, it) => acc + (it.quantity || 1), 0);
       return sum + itemsCount;

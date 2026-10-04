@@ -20,7 +20,6 @@ import {
   Radio,
   ChevronRight,
   RefreshCw,
-  Sparkles,
   Zap
 } from 'lucide-react';
 
@@ -512,8 +511,8 @@ export const ActiveDeliveriesView: React.FC<ActiveDeliveriesViewProps> = ({
                             <span>{order.pickupLocation.bayNumber || 'Standard LPG Rack'}</span>
                           </div>
                           {order.pickupLocation.notes && (
-                            <div className="sm:col-span-2 text-amber-800 italic bg-amber-100/60 p-2 rounded-lg">
-                              📋 {order.pickupLocation.notes}
+                            <div className="sm:col-span-2 text-amber-800 text-xs bg-amber-100/60 p-2 rounded-lg font-medium">
+                              Note: {order.pickupLocation.notes}
                             </div>
                           )}
                         </div>
@@ -883,7 +882,7 @@ export const ActiveDeliveriesView: React.FC<ActiveDeliveriesViewProps> = ({
                       {currentInspectOrder.customerName}
                     </span>
                     <span className="font-bold font-mono text-emerald-700">
-                      ETA: ~{currentInspectOrder.driverEtaMinutes || 18} mins
+                      {typeof currentInspectOrder.driverEtaMinutes === 'number' ? `ETA: ~${currentInspectOrder.driverEtaMinutes} mins` : 'Live Delivery'}
                     </span>
                   </div>
 

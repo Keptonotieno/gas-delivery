@@ -24,7 +24,6 @@ import {
   Flame,
   RefreshCw,
   X,
-  Sparkles,
   AlertCircle,
   Package,
   ArrowUpRight,

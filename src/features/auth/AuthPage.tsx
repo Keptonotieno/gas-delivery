@@ -109,8 +109,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({
 
     if (!password) {
       setError({
-        message: 'Please enter your password.',
-        actionableHint: 'Default demo account password is "GasDeliver@2024".'
+        message: 'Please enter your password.'
       });
       return;
     }
@@ -133,7 +132,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({
       } else if (errMsg.toLowerCase().includes('invalid password')) {
         setError({
           message: 'Invalid password.',
-          actionableHint: 'The password you entered is incorrect. Please check for caps lock or verify your password (demo password: GasDeliver@2024).'
+          actionableHint: 'The password you entered is incorrect. Please check for caps lock and try again.'
         });
       } else if (errMsg.toLowerCase().includes('no account found') || errMsg.toLowerCase().includes('unknown')) {
         setError({
@@ -222,13 +221,6 @@ export const AuthPage: React.FC<AuthPageProps> = ({
     } finally {
       setIsLoading(false);
     }
-  };
-
-  // Preset demo account autofill helper
-  const handleQuickFill = (presetEmail: string) => {
-    setEmail(presetEmail);
-    setPassword('GasDeliver@2024');
-    setError(null);
   };
 
   return (
@@ -320,7 +312,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="e.g. ops.manager@gasdeliver.co.ke or your email"
+                      placeholder="name@example.com"
                       className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 dark:border-[#202D42] bg-white dark:bg-[#131B2A] text-xs text-gray-900 dark:text-white placeholder:text-gray-400 focus:outline-hidden focus:border-[#E04F11]"
                     />
                   </div>
@@ -385,59 +377,6 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                   )}
                 </button>
 
-                {/* Quick Demo Access Bar */}
-                <div className="pt-4 border-t border-gray-100 dark:border-[#202D42]">
-                  <div className="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-2 flex items-center justify-between">
-                    <span>⚡ Quick Test Logins (1-Click Fill)</span>
-                    <span className="text-[10px] text-gray-400">pw: GasDeliver@2024</span>
-                  </div>
-                  <div className="grid grid-cols-2 gap-1.5">
-                    <button
-                      type="button"
-                      onClick={() => handleQuickFill('ops.manager@gasdeliver.co.ke')}
-                      className="p-2 rounded-lg border border-gray-200 dark:border-[#202D42] hover:bg-gray-50 dark:hover:bg-[#1E293B] text-left text-xs transition-colors cursor-pointer"
-                    >
-                      <div className="font-bold text-gray-900 dark:text-white flex items-center gap-1">
-                        <span>👑 Admin</span>
-                      </div>
-                      <div className="text-[10px] text-gray-500 truncate">ops.manager@...</div>
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={() => handleQuickFill('john.kamau@gasdeliver.co.ke')}
-                      className="p-2 rounded-lg border border-gray-200 dark:border-[#202D42] hover:bg-gray-50 dark:hover:bg-[#1E293B] text-left text-xs transition-colors cursor-pointer"
-                    >
-                      <div className="font-bold text-gray-900 dark:text-white flex items-center gap-1">
-                        <span>🚚 Active Driver</span>
-                      </div>
-                      <div className="text-[10px] text-gray-500 truncate">john.kamau@...</div>
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={() => handleQuickFill('driver.pending@gasdeliver.co.ke')}
-                      className="p-2 rounded-lg border border-amber-200 dark:border-amber-800/40 bg-amber-50/50 dark:bg-amber-950/20 hover:bg-amber-100 text-left text-xs transition-colors cursor-pointer"
-                    >
-                      <div className="font-bold text-amber-800 dark:text-amber-300 flex items-center gap-1">
-                        <span>⏳ Pending Driver</span>
-                      </div>
-                      <div className="text-[10px] text-amber-700/80 truncate">driver.pending@...</div>
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={() => handleQuickFill('sarah.mwangi@gmail.com')}
-                      className="p-2 rounded-lg border border-gray-200 dark:border-[#202D42] hover:bg-gray-50 dark:hover:bg-[#1E293B] text-left text-xs transition-colors cursor-pointer"
-                    >
-                      <div className="font-bold text-gray-900 dark:text-white flex items-center gap-1">
-                        <span>🛒 Customer</span>
-                      </div>
-                      <div className="text-[10px] text-gray-500 truncate">sarah.mwangi@...</div>
-                    </button>
-                  </div>
-                </div>
-
                 {/* Distinct Sign-Up Pathways Callouts */}
                 <div className="pt-4 border-t border-gray-100 dark:border-[#202D42] space-y-2">
                   <div className="text-center text-xs text-gray-500 dark:text-slate-400">
@@ -454,11 +393,11 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                       className="p-3 rounded-xl border border-gray-200 dark:border-[#202D42] hover:border-[#E04F11] hover:bg-orange-50/40 dark:hover:bg-orange-950/20 text-left transition-all cursor-pointer group"
                     >
                       <div className="text-xs font-bold text-gray-900 dark:text-white group-hover:text-[#E04F11] flex items-center justify-between">
-                        <span>🛒 Order Gas (Customer)</span>
+                        <span>Order Gas (Customer)</span>
                         <ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:translate-x-0.5 transition-transform" />
                       </div>
                       <div className="text-[10px] text-gray-500 dark:text-slate-400 mt-0.5">
-                        Instant frictionless sign-up
+                        Create an account to start ordering
                       </div>
                     </button>
 
@@ -471,7 +410,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                       className="p-3 rounded-xl border border-gray-200 dark:border-[#202D42] hover:border-blue-500 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 text-left transition-all cursor-pointer group"
                     >
                       <div className="text-xs font-bold text-gray-900 dark:text-white group-hover:text-blue-600 flex items-center justify-between">
-                        <span>🚚 Drive with Us</span>
+                        <span>Become a Courier Driver</span>
                         <ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:translate-x-0.5 transition-transform" />
                       </div>
                       <div className="text-[10px] text-gray-500 dark:text-slate-400 mt-0.5">

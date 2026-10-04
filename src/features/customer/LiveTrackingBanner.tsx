@@ -102,7 +102,7 @@ export const LiveTrackingBanner: React.FC<LiveTrackingBannerProps> = ({
               Estimated Arrival
             </span>
             <span className="text-base sm:text-lg font-mono font-extrabold text-white">
-              ~{order.driverEtaMinutes || 18} mins
+              {typeof order.driverEtaMinutes === 'number' ? `~${order.driverEtaMinutes} mins` : 'Express Corridor'}
             </span>
           </div>
         </div>

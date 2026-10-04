@@ -1,6 +1,7 @@
 import React from 'react';
 import { Home, Clock, FileText, Truck, Settings, LogOut } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
+import { GasDeliverLogo } from './GasDeliverLogo';
 
 export interface SidebarNavItem {
   id: string;
@@ -47,17 +48,8 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({
         {/* Top Section with App Icon & Navigation Items */}
         <div className="flex flex-col items-center w-full gap-5">
           {/* Top Logo Glyph */}
-          <div className="w-10 h-10 rounded-xl bg-orange-50 border border-orange-200 flex items-center justify-center text-[#E04F11] shadow-2xs mb-2">
-            <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
-              <path
-                d="M12 2C10.5 4.5 9 6.8 9 9.5C9 11.2 9.7 12.7 10.8 13.8C10.3 12.9 10 11.7 10 10.5C10 8.5 11 6.8 12 5.5C13 6.8 14 8.5 14 10.5C14 11.7 13.7 12.9 13.2 13.8C14.3 12.7 15 11.2 15 9.5C15 6.8 13.5 4.5 12 2Z"
-                fill="#E04F11"
-              />
-              <path
-                d="M6 14.5C6 11.8 7.3 9.4 9 8C7.5 9.8 6.8 12 6.8 14.5C6.8 17.5 9.1 20 12 20C14.9 20 17.2 17.5 17.2 14.5C17.2 12 16.5 9.8 15 8C16.7 9.4 18 11.8 18 14.5C18 18.1 15.3 21 12 21C8.7 21 6 18.1 6 14.5Z"
-                fill="#2563EB"
-              />
-            </svg>
+          <div className="flex items-center justify-center mb-2">
+            <GasDeliverLogo size="sm" showText={false} />
           </div>
 
           {/* Navigation Items List */}

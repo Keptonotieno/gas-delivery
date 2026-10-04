@@ -110,7 +110,7 @@ export const DriverProfileModal: React.FC<DriverProfileModalProps> = ({
               Available for Cashout
             </span>
             <span className="text-lg font-mono font-black text-emerald-700 block">
-              {formatKSh(earnings?.wallet?.availableForCashoutKSh || 12500)}
+              {formatKSh(earnings?.wallet?.availableForCashoutKSh ?? 0)}
             </span>
           </div>
           <button

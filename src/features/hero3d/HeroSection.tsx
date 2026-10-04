@@ -112,7 +112,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectRoleInfo }) =>
 
       {/* Footer */}
       <div className="text-xs text-white/75 relative z-10 pt-4 flex items-center justify-between border-t border-white/15">
-        <span>© 2024 GasDeliver Inc.</span>
+        <span>© {new Date().getFullYear()} GasDeliver Inc.</span>
         <div className="space-x-3 font-medium">
           <span className="hover:underline cursor-pointer">Terms</span>
           <span>·</span>

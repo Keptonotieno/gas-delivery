@@ -222,10 +222,15 @@ export const DispatchBoard: React.FC<DispatchBoardProps> = ({
                       <span className="text-rose-600 font-bold flex items-center gap-1">
                         <AlertTriangle className="w-3.5 h-3.5" /> Overdue ({Math.abs(order.slaRemainingMinutes || 0)}m)
                       </span>
+                    ) : typeof order.slaRemainingMinutes === 'number' ? (
+                      <span className="flex items-center gap-1 text-gray-600">
+                        <Clock className="w-3.5 h-3.5 text-gray-400" />
+                        <span>{order.slaRemainingMinutes}m SLA</span>
+                      </span>
                     ) : (
                       <span className="flex items-center gap-1 text-gray-600">
                         <Clock className="w-3.5 h-3.5 text-gray-400" />
-                        <span>{order.slaRemainingMinutes || 35}m SLA</span>
+                        <span>Standard SLA</span>
                       </span>
                     )}
                   </div>
@@ -349,10 +354,15 @@ export const DispatchBoard: React.FC<DispatchBoardProps> = ({
                         <span className="text-red-600 font-bold text-xs flex items-center gap-1 bg-red-50 px-2 py-0.5 rounded border border-red-200">
                           <AlertTriangle className="w-3.5 h-3.5" /> Overdue ({Math.abs(order.slaRemainingMinutes || 0)}m)
                         </span>
+                      ) : typeof order.slaRemainingMinutes === 'number' ? (
+                        <span className="text-gray-700 font-semibold text-xs flex items-center gap-1">
+                          <Clock className="w-3.5 h-3.5 text-gray-400" />
+                          <span>{order.slaRemainingMinutes}m left</span>
+                        </span>
                       ) : (
                         <span className="text-gray-700 font-semibold text-xs flex items-center gap-1">
                           <Clock className="w-3.5 h-3.5 text-gray-400" />
-                          <span>{order.slaRemainingMinutes || 35}m left</span>
+                          <span>Standard SLA</span>
                         </span>
                       )}
                     </td>

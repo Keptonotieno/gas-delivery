@@ -22,7 +22,7 @@ import {
 import { api } from '../../services/api';
 import { IntegrationsView } from './IntegrationsView';
 import { useTheme } from '../../contexts/ThemeContext';
-import { Sun, Moon, Monitor } from 'lucide-react';
+import { Sun, Moon } from 'lucide-react';
 
 interface SettingsViewProps {
   onRefresh?: () => void;
@@ -263,7 +263,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {/* Light Option */}
                 <button
                   type="button"
@@ -309,30 +309,6 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                   <div>
                     <div className="text-xs font-bold text-white">Dark Mode</div>
                     <div className="text-[10px] text-slate-400 mt-0.5">Executive eye-safe contrast</div>
-                  </div>
-                </button>
-
-                {/* Auto / System Option */}
-                <button
-                  type="button"
-                  onClick={() => setTheme('system')}
-                  className={`p-3.5 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between ${
-                    theme === 'system'
-                      ? 'border-[#E04F11] ring-2 ring-[#E04F11]/20 bg-orange-50/40'
-                      : 'border-slate-200 hover:border-slate-300 bg-white'
-                  }`}
-                >
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center">
-                      <Monitor className="w-4 h-4" />
-                    </div>
-                    {theme === 'system' && (
-                      <span className="w-2 h-2 rounded-full bg-[#E04F11]" />
-                    )}
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold text-slate-900">System Sync</div>
-                    <div className="text-[10px] text-slate-500 mt-0.5">Matches OS preference</div>
                   </div>
                 </button>
               </div>

@@ -134,7 +134,7 @@ export const AdminPortal: React.FC = () => {
         setLiveToast({
           id: `toast-${Date.now()}`,
           type: 'driver',
-          title: '📋 New Driver Application',
+          title: 'New Driver Application',
           message: `${app?.applicantName || 'Driver'} applied with ${app?.licensePlate || 'vehicle'} in ${app?.corridorZone || 'Nairobi'}`
         });
         setTimeout(() => setLiveToast(null), 5000);
@@ -144,7 +144,7 @@ export const AdminPortal: React.FC = () => {
         setLiveToast({
           id: `toast-${Date.now()}`,
           type: 'system',
-          title: '👤 New Customer Registered',
+          title: 'New Customer Registered',
           message: `${cust?.name || 'A customer'} just created an account (${cust?.email || ''})`
         });
         setTimeout(() => setLiveToast(null), 5000);
@@ -159,7 +159,7 @@ export const AdminPortal: React.FC = () => {
         setLiveToast({
           id: `toast-${Date.now()}`,
           type: 'order',
-          title: '⚡ New Order Created',
+          title: 'New Order Created',
           message: `Order #${ord?.id || ''} from ${ord?.customerName || 'Customer'} (${ord?.cylinderSummary || 'Cylinder'})`
         });
         setTimeout(() => setLiveToast(null), 5000);
@@ -174,7 +174,7 @@ export const AdminPortal: React.FC = () => {
         setLiveToast({
           id: `toast-${Date.now()}`,
           type: 'driver',
-          title: '🚚 Courier Assigned',
+          title: 'Courier Assigned',
           message: `${drvName} assigned to Order #${ordId}`
         });
         setTimeout(() => setLiveToast(null), 5000);
@@ -188,7 +188,7 @@ export const AdminPortal: React.FC = () => {
         setLiveToast({
           id: `toast-${Date.now()}`,
           type: 'system',
-          title: '📍 Customer Live Doorstep GPS',
+          title: 'Customer Doorstep Location Updated',
           message: `Real-time doorstep coordinates updated for Order #${orderId || ''}`
         });
         setTimeout(() => setLiveToast(null), 5000);
@@ -201,7 +201,7 @@ export const AdminPortal: React.FC = () => {
           setLiveToast({
             id: `toast-${Date.now()}`,
             type: 'order',
-            title: '✅ Delivery Completed (POD)',
+            title: 'Delivery Completed (POD)',
             message: `Order #${ord.id} safely delivered with verified customer signoff.`
           });
           setTimeout(() => setLiveToast(null), 5000);
@@ -211,7 +211,7 @@ export const AdminPortal: React.FC = () => {
         setLiveToast({
           id: `toast-${Date.now()}`,
           type: 'order',
-          title: '📦 Order Soft-Deleted',
+          title: 'Order Soft-Deleted',
           message: `Order #${ord?.id || ''} has been archived with audit reason.`
         });
         setTimeout(() => setLiveToast(null), 5000);
@@ -220,7 +220,7 @@ export const AdminPortal: React.FC = () => {
         setLiveToast({
           id: `toast-${Date.now()}`,
           type: 'order',
-          title: '🔄 Order Restored',
+          title: 'Order Restored',
           message: `Order #${ord?.id || ''} restored to active operations.`
         });
         setTimeout(() => setLiveToast(null), 5000);

@@ -2094,11 +2094,11 @@ export const EmployeesView: React.FC<EmployeesViewProps> = ({
                           : 'border-slate-200 hover:border-slate-300 text-slate-700 bg-white'
                       }`}
                     >
-                      {cat === 'Resigned' && '👋 Resigned (Voluntary)'}
-                      {cat === 'Fired' && '🛑 Fired (Disciplinary)'}
-                      {cat === 'Contract Ended' && '📋 Contract Concluded'}
-                      {cat === 'Relocated' && '📍 Relocated'}
-                      {cat === 'Other' && '📝 Other Reason'}
+                      {cat === 'Resigned' && 'Resigned (Voluntary)'}
+                      {cat === 'Fired' && 'Fired (Disciplinary)'}
+                      {cat === 'Contract Ended' && 'Contract Concluded'}
+                      {cat === 'Relocated' && 'Relocated'}
+                      {cat === 'Other' && 'Other Reason'}
                     </button>
                   ))}
                 </div>

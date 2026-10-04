@@ -7,7 +7,6 @@ import {
   Eye,
   EyeOff,
   Navigation,
-  Sparkles,
   ChevronUp,
   ChevronDown,
   Building2,
@@ -90,8 +89,7 @@ export const ThikaDemandDensityMap: React.FC<ThikaDemandDensityMapProps> = ({
     'zone-thika': { x: 980, y: 35 }
   };
 
-  // Seed baseline demand distributions across Thika Highway corridor
-  // and dynamically incorporate live pending orders from all system orders
+  // Dynamically calculate demand clusters based purely on live active/pending orders along the corridor
   const clusters: DemandCluster[] = useMemo(() => {
     // Filter pending/active system orders
     const pendingOrders = orders.filter(
@@ -103,26 +101,8 @@ export const ThikaDemandDensityMap: React.FC<ThikaDemandDensityMapProps> = ({
         o.status === 'Driver Assigned'
     );
 
-    // Realistic base weights representing residential cylinder turnover along Thika Road
-    const baseDemandWeights: Record<string, { count: number; value: number }> = {
-      'zone-roysambu': { count: 14, value: 44200 }, // Dense apartment corridor (Lumumba Dr, TRM)
-      'zone-gardencity': { count: 9, value: 28600 }, // Willstone, Roasters, Garden City
-      'zone-kahawa': { count: 11, value: 34500 }, // KU, Wendani, Sukari estates
-      'zone-kasarani': { count: 8, value: 25100 }, // Sports View, Sunton, Clay City
-      'zone-mirema': { count: 7, value: 21800 }, // USIU students & residential apartments
-      'zone-githurai': { count: 6, value: 18400 }, // High volume household refill
-      'zone-ruiru': { count: 5, value: 16500 }, // Membley & Eastern Bypass developments
-      'zone-juja': { count: 6, value: 17900 }, // JKUAT student apartments & Highpoint
-      'zone-ruaraka': { count: 4, value: 12500 }, // Survey, Utalii, KSMS
-      'zone-ngara': { count: 4, value: 13200 }, // Pangani & Ngara fringe
-      'zone-toll': { count: 3, value: 9800 }, // Spur Mall & NIBS
-      'zone-witeithie': { count: 2, value: 6200 },
-      'zone-thika': { count: 3, value: 9500 }
-    };
-
     return THIKA_HIGHWAY_ZONES.map((zone) => {
       const coords = zoneCoordinates[zone.id] || { x: 500, y: 300 };
-      const base = baseDemandWeights[zone.id] || { count: 2, value: 6000 };
 
       // Check matching live orders in this zone
       const matchingLiveOrders = pendingOrders.filter((ord) => {
@@ -138,59 +118,38 @@ export const ThikaDemandDensityMap: React.FC<ThikaDemandDensityMapProps> = ({
         );
       });
 
-      const totalPendingCount = base.count + matchingLiveOrders.length;
-      const totalEstimatedValue =
-        base.value + matchingLiveOrders.reduce((sum, o) => sum + (o.items?.[0]?.unitPrice || 3200), 0);
+      const totalPendingCount = matchingLiveOrders.length;
+      const totalEstimatedValue = matchingLiveOrders.reduce(
+        (sum, o) => sum + (o.total || (o.items?.[0]?.unitPrice ? (o.items[0].unitPrice * (o.items[0].quantity || 1)) : 0)),
+        0
+      );
 
-      // Determine intensity and radius
+      // Determine intensity and radius directly from actual order volume
       let intensity: 'hot' | 'high' | 'moderate' | 'low' = 'low';
-      let radius = 45;
+      let radius = 38;
 
-      if (totalPendingCount >= 10) {
+      if (totalPendingCount >= 5) {
         intensity = 'hot';
-        radius = 85;
-      } else if (totalPendingCount >= 7) {
+        radius = 80;
+      } else if (totalPendingCount >= 3) {
         intensity = 'high';
-        radius = 70;
-      } else if (totalPendingCount >= 4) {
+        radius = 65;
+      } else if (totalPendingCount >= 1) {
         intensity = 'moderate';
-        radius = 56;
+        radius = 50;
       } else {
         intensity = 'low';
-        radius = 44;
+        radius = 38;
       }
 
-      // Sample order micro-dots representation
-      const sampleOrders = [
-        ...matchingLiveOrders.map((o) => ({
-          id: o.id,
-          customerEstate: o.deliveryAddress?.street || zone.popularEstates[0] || 'Corridor Delivery',
-          cylinderSummary: o.cylinderSummary || '13 kg LPG Refill',
-          value: o.items?.[0]?.unitPrice || 3200,
-          brand: o.cylinderBrand || 'TotalEnergies'
-        })),
-        {
-          id: `DEM-${zone.id.substring(5, 8).toUpperCase()}-01`,
-          customerEstate: zone.popularEstates[0] || 'Apartment Block A',
-          cylinderSummary: '13 kg Standard Refill',
-          value: 3200,
-          brand: 'TotalEnergies'
-        },
-        {
-          id: `DEM-${zone.id.substring(5, 8).toUpperCase()}-02`,
-          customerEstate: zone.popularEstates[1] || 'Court 4',
-          cylinderSummary: '6 kg Mini Kit & Burner',
-          value: 1550,
-          brand: 'Rubis'
-        },
-        {
-          id: `DEM-${zone.id.substring(5, 8).toUpperCase()}-03`,
-          customerEstate: zone.landmarks[0] || 'Main Gate Road',
-          cylinderSummary: '13 kg Exchange',
-          value: 3100,
-          brand: 'K-Gas'
-        }
-      ].slice(0, Math.min(totalPendingCount, 6));
+      // Live order micro-dots representation exclusively from real matching orders
+      const sampleOrders = matchingLiveOrders.map((o) => ({
+        id: o.id,
+        customerEstate: o.deliveryAddress?.street || zone.popularEstates[0] || 'Corridor Delivery',
+        cylinderSummary: o.cylinderSummary || (o.items?.[0]?.productName) || 'LPG Refill',
+        value: o.total || o.items?.[0]?.unitPrice || 0,
+        brand: o.cylinderBrand || o.items?.[0]?.brand || 'TotalEnergies'
+      })).slice(0, 6);
 
       return {
         zone,
