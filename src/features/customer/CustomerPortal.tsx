@@ -433,7 +433,6 @@ export const CustomerPortal: React.FC = () => {
           variant="customer"
           customerName={user?.name || 'Wanjiru M.'}
           unreadCount={unreadNotifications}
-          isConnected={isConnected}
           onLogout={logout}
           onProfileClick={() => setWorkspaceMode('support')}
           onSettingsClick={() => setWorkspaceMode('support')}

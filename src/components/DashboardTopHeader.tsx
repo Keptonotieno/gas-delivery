@@ -8,7 +8,6 @@ interface CustomerHeaderProps {
   customerName?: string;
   customerAvatar?: string;
   unreadCount?: number;
-  isConnected?: boolean;
   onNotificationsClick?: () => void;
   onProfileClick?: () => void;
   onSettingsClick?: () => void;
@@ -25,7 +24,6 @@ interface DriverHeaderProps {
   onToggleOnline?: () => void;
   isUpdatingStatus?: boolean;
   unreadCount?: number;
-  isConnected?: boolean;
   onNotificationsClick?: () => void;
   onProfileClick?: () => void;
   onSettingsClick?: () => void;
@@ -59,14 +57,6 @@ export const DashboardTopHeader: React.FC<DashboardTopHeaderProps> = (props) => 
 
         {/* Right: Notifications & Customer Profile */}
         <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
-          {/* Real-time SSE indicator */}
-          <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">
-            <span className={`w-2 h-2 rounded-full ${props.isConnected ? 'bg-emerald-500 animate-pulse' : 'bg-amber-400'}`} />
-            <span className="font-mono text-[10px] tracking-wide uppercase text-slate-600 dark:text-slate-300">
-              {props.isConnected ? 'Live' : 'Connecting'}
-            </span>
-          </div>
-
           {/* Theme Toggle */}
           <ThemeToggle />
 
@@ -177,14 +167,6 @@ export const DashboardTopHeader: React.FC<DashboardTopHeaderProps> = (props) => 
 
       {/* Right: Online Status, Notifications, Driver Avatar & Info */}
       <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
-        {/* Real-time SSE indicator */}
-        <div className="hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">
-          <span className={`w-2 h-2 rounded-full ${props.isConnected ? 'bg-emerald-500 animate-pulse' : 'bg-amber-400'}`} />
-          <span className="font-mono text-[10px] tracking-wide uppercase text-slate-600 dark:text-slate-300">
-            {props.isConnected ? 'Live Telemetry' : 'Connecting'}
-          </span>
-        </div>
-
         {/* Theme Toggle */}
         <ThemeToggle />
 

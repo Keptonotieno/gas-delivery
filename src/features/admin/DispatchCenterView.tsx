@@ -107,13 +107,7 @@ export const DispatchCenterView: React.FC<DispatchCenterViewProps> = ({
             <Truck className="w-5 h-5" />
           </div>
           <div>
-            <div className="flex items-center gap-2">
-              <h1 className="text-base font-bold text-slate-900 tracking-tight">Central Dispatch Console</h1>
-              <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-700 text-xs font-semibold">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                Live Connected
-              </span>
-            </div>
+            <h1 className="text-base font-bold text-slate-900 tracking-tight">Central Dispatch Console</h1>
             <p className="text-xs text-slate-500 mt-0.5">
               Nairobi Metropolitan Fast-Fulfillment Operations · 3-Column Logistics Center
             </p>

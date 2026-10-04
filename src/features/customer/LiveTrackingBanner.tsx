@@ -117,7 +117,7 @@ export const LiveTrackingBanner: React.FC<LiveTrackingBannerProps> = ({
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-bold text-gray-900 uppercase tracking-wider flex items-center gap-1.5">
                 <MapPin className="w-3.5 h-3.5 text-[#E04F11]" />
-                Live Corridor Telemetry
+                Live Route Map
               </span>
               <span className="text-[11px] text-gray-500 font-medium">
                 Route: Central Depot → {order.deliveryAddress?.street || 'Destination'}

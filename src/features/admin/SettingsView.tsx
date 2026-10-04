@@ -65,7 +65,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
     setSyncing(true);
     try {
       if (onRefresh) await onRefresh();
-      setSavedMessage('Fleet telemetry resynced successfully!');
+      setSavedMessage('Fleet status resynced successfully!');
       setTimeout(() => setSavedMessage(null), 3000);
     } catch (err) {
       // ignore
@@ -431,7 +431,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                 className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-lg text-xs font-semibold flex items-center gap-2 transition-colors cursor-pointer"
               >
                 <RefreshCw className={`w-3.5 h-3.5 text-slate-600 ${syncing ? 'animate-spin' : ''}`} />
-                <span>Resync Fleet Telemetry</span>
+                <span>Resync Fleet Feeds</span>
               </button>
             </div>
           </div>

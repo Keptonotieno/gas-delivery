@@ -269,7 +269,7 @@ export const IntegrationsView: React.FC<IntegrationsViewProps> = ({ onNavigateTa
               ? 'bg-amber-50 text-amber-800 border-amber-200' 
               : 'bg-emerald-50 text-emerald-800 border-emerald-200'
           }`}>
-            <span className={`w-2 h-2 rounded-full ${hasIssues ? 'bg-amber-500' : 'bg-emerald-500'} animate-pulse`} />
+            <span className={`w-2 h-2 rounded-full ${hasIssues ? 'bg-amber-500' : 'bg-emerald-500'}`} />
             {hasIssues ? `${overview?.needsAttention} integration requires attention` : 'All systems operational'}
           </div>
 

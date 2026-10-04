@@ -86,7 +86,7 @@ export const OperationsControlMenu: React.FC<OperationsControlMenuProps> = ({
           </div>
 
           <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
             <span>Shift Active</span>
           </div>
         </div>

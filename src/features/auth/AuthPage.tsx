@@ -253,7 +253,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({
               Gas cylinders at your door in under 2 hours.
             </h2>
             <p className="text-xs text-white/90 leading-relaxed">
-              Order LPG refills & complete kits across Nairobi with live GPS telemetry.
+              Order LPG refills & complete kits across Nairobi with live order tracking.
             </p>
           </div>
           <div className="absolute -bottom-8 -right-8 w-36 h-36 rounded-full bg-white/10 pointer-events-none" />

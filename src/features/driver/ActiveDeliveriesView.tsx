@@ -148,15 +148,9 @@ export const ActiveDeliveriesView: React.FC<ActiveDeliveriesViewProps> = ({
       <div className="bg-white rounded-2xl border border-gray-200 shadow-2xs p-4 sm:p-5">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-gray-100">
           <div>
-            <div className="flex items-center gap-2">
-              <h1 className="text-xl sm:text-2xl font-black text-gray-900 tracking-tight">
-                Active Deliveries & Pickup Queue
-              </h1>
-              <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                Live Sync
-              </span>
-            </div>
+            <h1 className="text-xl sm:text-2xl font-black text-gray-900 tracking-tight">
+              Active Deliveries & Pickup Queue
+            </h1>
             <p className="text-xs sm:text-sm text-gray-600 mt-1">
               Real-time route management with depot pickup highlights and instant stage transitions.
             </p>

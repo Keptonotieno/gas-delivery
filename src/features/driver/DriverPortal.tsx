@@ -472,7 +472,6 @@ export const DriverPortal: React.FC = () => {
           onToggleOnline={handleToggleOnline}
           isUpdatingStatus={isUpdatingStatus}
           unreadCount={notifications.length}
-          isConnected={isConnected}
           onNotificationsClick={() => {
             setActionNotice({
               type: 'info',
@@ -566,14 +565,8 @@ export const DriverPortal: React.FC = () => {
               </button>
             </div>
 
-            {/* Quick Refresh / Zone Indicator + Live Telemetry Badge */}
+            {/* Quick Refresh / Zone Indicator */}
             <div className="flex items-center gap-2 pr-2">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">
-                <span className={`w-2 h-2 rounded-full ${isConnected ? 'bg-emerald-500 animate-pulse' : 'bg-amber-400'}`} />
-                <span className="font-mono text-[10px] tracking-wide uppercase text-slate-600 dark:text-slate-300">
-                  {isConnected ? 'Telemetry Live' : 'Connecting'}
-                </span>
-              </span>
               <button
                 type="button"
                 onClick={() => loadDriverData()}

@@ -265,7 +265,7 @@ export const AdminPortal: React.FC = () => {
       case 'Customers':
         return 'Customer Directory & Accounts';
       case 'Dispatch':
-        return 'Live Dispatch Board & Telemetry';
+        return 'Dispatch Board & Deliveries';
       case 'Drivers':
         return 'Field Fleet & Courier Tracking';
       case 'Verifications':
@@ -292,7 +292,7 @@ export const AdminPortal: React.FC = () => {
   const getPageSubtitle = () => {
     switch (activeTab) {
       case 'Overview':
-        return 'Real-time dispatch, fleet telemetry, and LPG inventory control';
+        return 'Fleet dispatch, active deliveries, and LPG inventory control';
       case 'Orders':
         return 'Comprehensive order log, status tracking, and fulfillment workflow';
       case 'Customers':
@@ -300,7 +300,7 @@ export const AdminPortal: React.FC = () => {
       case 'Dispatch':
         return 'Live route dispatching and driver allocation across Nairobi corridors';
       case 'Drivers':
-        return 'Driver statuses, GPS telemetry, active routes, and performance ratings';
+        return 'Driver statuses, active vehicle routes, and performance ratings';
       case 'Verifications':
         return 'Kenyan National IDs, NTSA driver licenses, vehicle compliance records, and driver onboarding approvals';
       case 'Employees':
@@ -786,14 +786,6 @@ export const AdminPortal: React.FC = () => {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-36 pl-8 pr-2.5 py-1.5 bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 rounded-lg text-xs text-slate-800 placeholder:text-slate-400 focus:outline-hidden focus:border-[#E04F11] transition-all"
               />
-            </div>
-
-            {/* Live SSE Telemetry Status */}
-            <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-slate-50 border border-slate-200 text-slate-700">
-              <span className={`w-2 h-2 rounded-full ${isConnected ? 'bg-emerald-500 animate-pulse' : 'bg-amber-400'}`} />
-              <span className="font-mono text-[10px] tracking-wider uppercase text-slate-600">
-                {isConnected ? 'Realtime Sync Active' : 'Connecting...'}
-              </span>
             </div>
 
             {/* Calendar / Date Button matching reference */}

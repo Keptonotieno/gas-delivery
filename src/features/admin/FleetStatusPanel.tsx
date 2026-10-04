@@ -29,10 +29,7 @@ export const FleetStatusPanel: React.FC<FleetStatusPanelProps> = ({ drivers, onS
       {/* Panel Header */}
       <div className="flex items-center justify-between pb-3 border-b border-gray-100 mb-4">
         <div>
-          <div className="flex items-center gap-2">
-            <h3 className="font-bold text-gray-900 text-base">Active Fleet Status</h3>
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          </div>
+          <h3 className="font-bold text-gray-900 text-base">Active Fleet Status</h3>
           <p className="text-xs text-gray-400">Real-time driver location and load</p>
         </div>
       </div>
